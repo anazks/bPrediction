@@ -1,0 +1,206 @@
+.prediction{
+    width: 50%;
+    height: 30px;
+    margin: auto;
+}
+.alert {
+    width: 50%;
+    margin: auto;
+    height: 70px;
+    background-color: red;
+    color: white;
+    animation: blink 1s infinite alternate; /* Add animation */
+}
+
+@keyframes blink {
+    0% { opacity: 1; } /* Start with full opacity */
+    100% { opacity: 0; } /* End with no opacity (invisible) */
+}
+
+.prediction i{
+    color: white;
+    font-size: 15px;
+}
+.temp{
+    width: 170px;
+    height: 150px;
+    margin: auto;
+    background-color: rgb(231, 100, 185);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-size: cover;
+    color: white;
+    background-size: cover;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+.temp:hover{
+    background-color: red;
+    color: white;
+}
+.rate{
+    color: white;
+    width: 170px;
+    height: 150px;
+    margin: auto;
+    background-color: rgb(231, 100, 185);
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.rate:hover{
+    background-color: black;
+    color: white;
+}
+.main{
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: auto;
+    margin-top: 40px;
+    flex-wrap: wrap;
+}
+.temp span{
+    font-size: 19px;
+    font-style: bold;
+}
+.content{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+}
+.hearRate{
+    color:  yellow;
+    background-size: cover;
+}
+.overHeat{
+    width: 70%;
+    height: 120px;
+    background-color: red;
+    margin: auto;
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+.anlyze{
+    width: 50px;
+    height: 30px;
+    background-color: yellow;
+    color: black;
+    text-decoration: none;
+}
+.main div{
+    margin-top: 20px !important;
+}
+.temprature{
+    width:90%;
+    height: 200px !important;
+    background-color: none !important;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+    
+}
+.temprature .items{
+    padding: 10px;
+    width:100px;
+    height: 100px;
+    background-color: rgb(28, 27, 27);
+
+}
+.bottom_row{
+    width: 100%;
+    height: 100px;
+    margin: auto;
+    background-color: rgb(24, 24, 24);
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+    border-bottom-left-radius: 50px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+.bottom_row button{
+    width: 100px;
+    height: 30px;
+    border:1px solid yellow;
+    background-color: black;
+    color: red;
+}
+.bottom_row span{
+    color: yellow;
+}
+.prediction{
+    width: 250px;
+    height: 90px;
+}
+.aq{
+    width: 50%;
+    height: 40px;
+    background-color: black;
+    color: greenyellow;
+    margin: auto;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    margin-top:10px;
+}
+.chekNow{
+    height: 35px;
+    width: 120px;
+    background-color: white;
+    border: none;
+    margin-top: 20px;
+}
+.chekNow:hover{
+    background-color: black;
+    color: white;
+}
+.secondDiv{
+    display: flex;
+    width: 80%;
+    margin: auto;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.form{
+    width: 200px;
+    height: 200px;
+    padding: 15px;
+}
+.form{
+    margin-top: 5%
+    ;
+    height: 390px;
+    width: 250px;
+    background-color: pink;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.btnSub{
+    width: 100px;
+    height: 30px;
+    background-color: white;
+    border: none;
+}
+.Reference{
+    background-color:yellow;
+    color: black;
+}
+.chanceBox{
+    width: 95%;
+    height: 30px;
+    background-color: red;
+    color: rgb(255, 255, 255);
+}
