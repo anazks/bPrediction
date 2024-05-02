@@ -4,6 +4,10 @@ import { dataRef } from '../Firebase';
 import Axios from '../Axios';
 import AxiosNew from '../Axios2';
 import Swal from 'sweetalert2'
+import { FaTemperatureLow } from "react-icons/fa";
+import { AiFillSafetyCertificate } from "react-icons/ai";
+import { FcProcess } from "react-icons/fc";
+import { FaHospital } from "react-icons/fa";
 
 function Display() {
   const [temp1, setTemp1] = useState(null);
@@ -14,6 +18,7 @@ function Display() {
   const [breastCancerRisk, setBreastCancerRisk] = useState(false);
   const [pChance, setPChance] = useState(null);
   const [form, setForm] = useState(false);
+  const [isMenstruating, setIsMenstruating] = useState(false);
   const [formData, setFormData] = useState({
     age: '',
     familyHistory: '',
@@ -21,7 +26,8 @@ function Display() {
     alcohol: '',
     menstruation: '',
     menopause: '',
-    fever: ''
+    fever: '',
+    cycle:''
   });
 
   useEffect(() => {
@@ -56,6 +62,7 @@ function Display() {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+    setIsMenstruating(e.target.value === 'yes');
     setFormData(prevState => ({
       ...prevState,
       [name]: value
@@ -85,7 +92,7 @@ function Display() {
 
   const calculateBreastCancerChance = () => {
     let chanceNo = 0;
-  
+    console.log(formData,"data")
     // Age
     const age = parseInt(formData.age);
     if (age >= 18 && age <= 39) {
@@ -125,7 +132,22 @@ function Display() {
     if (formData.fever === "yes") {
       chanceNo += 1;
     }
-  
+    if(formData.cycle==='14-28'){
+      if (temp2 >= 31.5 && temp2 <= 36) {
+        chanceNo += 0;
+      } else {
+        chanceNo += 1;
+      }
+      chanceNo += 0;
+    }
+    if(formData.cycle==='1-13'){
+      if (temp2 >= 31.5 && temp2 <= 36) {
+        chanceNo += 0;
+      } else {
+        chanceNo += 1;
+      }
+      chanceNo += 0;
+    }
     return chanceNo;
   };
 
@@ -136,11 +158,11 @@ function Display() {
     if (chanceNo >= 1 && chanceNo <= 5) {
       chance = "Low";
     } else if (chanceNo >= 6 && chanceNo <= 9) {
-      chance = "High";
+      chance = "Moderate";
     } else if( temp2 > 36){
-      chance = "Very High";
+      chance = "Moderate";
     } else {
-      chance = "Very High";
+      chance = "VeryHigh";
     }
     setPChance(chance);
     Swal.fire(chance);
@@ -148,8 +170,29 @@ function Display() {
 
   return (
     <>
+   {
+  pChance ? (
+    <div className='notification'>
+      {pChance === "Low" && (
+        <span>You Are far safe now from breast cancer <AiFillSafetyCertificate style={{color:"green",fontSize:'20'}}/></span>
+      )}
+      {pChance === 'moderate' && (
+        <span>Your chance is moderate please use this for next 2 days <FcProcess style={{color:"green",fontSize:'20'}}/></span>
+      )}
+      {pChance === 'VeryHigh' && (
+        <span>Your chance is High Go to nearest hospital <FaHospital style={{color:"green",fontSize:'20'}}/></span>
+      )}
+    </div>
+  ) : (
+    ""
+  )
+}
+
+   
       <div className='main'>
         <div className="rate">
+        <FaTemperatureLow />
+
           <div>
             <span>Temp 1</span>
             <h1>{temp1}</h1>
@@ -157,18 +200,25 @@ function Display() {
         </div>
         <div className="temp">
           <div>
+          <FaTemperatureLow />
+
             <span> Temp 2</span>
             <h1>{temp5}</h1>
           </div>
         </div>
         <div className="rate ">
           <div>
+          <FaTemperatureLow />
+
             <span>Tem2</span> <br />
             <h1>{temp3}</h1>
           </div>
         </div>
         <div className="rate ">
           <div>
+            
+          <FaTemperatureLow />
+
             <span>Tem3</span> <br />
             <h1>{temp4}</h1>
           </div>
@@ -187,7 +237,7 @@ function Display() {
           <form onSubmit={handleSubmit}>
             <div className="form">
               <input type="number" name="age" placeholder='Enter Your age' onChange={handleChange} /> <br />
-              Any Family History of breast cancer? <br />
+             <span> Any Family History? </span> <br />
               <label>
                 <input type="radio" name="familyHistory" value="yes" onChange={handleChange} /> Yes
               </label>
@@ -195,7 +245,7 @@ function Display() {
                 <input type="radio" name="familyHistory" value="no" onChange={handleChange} /> No
               </label>
               <br />
-              Previous Personal History? <br />
+             <span> Previous Personal History? </span> <br />
               <label>
                 <input type="radio" name="personalHistory" value="yes" onChange={handleChange} /> Yes
               </label>
@@ -203,7 +253,7 @@ function Display() {
                 <input type="radio" name="personalHistory" value="no" onChange={handleChange} /> No
               </label>
               <br />
-              Do you drink Alcohol? <br />
+             <span> Do you drink Alcohol? </span><br />
               <label> 
                 <input type="radio" name="alcohol" value="yes" onChange={handleChange} /> Yes
               </label>
@@ -211,19 +261,42 @@ function Display() {
                 <input type="radio" name="alcohol" value="no" onChange={handleChange} /> No
               </label>
               <br />
-              Menstruation Menarche <br />
+                <span> Menstruation Menarche</span> <br />
               <select name="menstruation" onChange={handleChange}>
                 <option value="before12">Before 12 years</option>
                 <option value="after12">After 12 years</option>
               </select>
               <br />
-              Menopause <br />
+              <span>Menopause</span> <br />
               <select name="menopause" onChange={handleChange}>
                 <option value="after55">After 55 years</option>
                 <option value="before55">Before 55 years</option>
+                <option value="before55">Not yet</option>
               </select>
               <br />
-              Do you have Fever currently? <br />
+             <span> Menstrual cycle </span><br />
+              <select name="cycle" onChange={handleChange}>
+                <option value="1-13">1 - 13</option>
+                <option value="14-28">14 - 28</option>
+              </select>
+              <br />
+              <span> Menstruating now?</span> <br />
+              <label> 
+                <input type="radio" name="mensturation" value="yes" onChange={handleChange} /> Yes
+              </label>
+              <label>
+                <input type="radio" name="mensturation" value="no" onChange={handleChange} /> No
+              </label>
+              {isMenstruating && (
+                <div>
+                  <label style={{color:'rgb(21, 240, 40)'}}>
+                    Enter the date of cycle :
+                    <input type="text" placeholder='ex:7' />
+                  </label>
+                </div>
+              )}
+           <br />   <span> Do you have Fever currently?</span> <br />
+           
               <label> 
                 <input type="radio" name="fever" value="yes" onChange={handleChange} /> Yes
               </label>

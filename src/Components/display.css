@@ -170,29 +170,51 @@
 .secondDiv{
     display: flex;
     width: 80%;
+    height: auto;
     margin: auto;
     justify-content: space-around;
     align-items: center;
     flex-wrap: wrap;
 }
-.form{
-    width: 200px;
-    height: 200px;
-    padding: 15px;
+.form span{
+    color: rgb(21, 240, 40);
 }
 .form{
-    margin-top: 5%
-    ;
-    height: 390px;
+    width: 200px;
+    height: 589px;
+    padding: 15px;
+}
+.cycleBox{
+    font-size: 10px;
+    height: 30px;
+    width: 90%;
+}
+.form{
+    margin-top: 5%;
+    height:490px;
     width: 250px;
-    background-color: pink;
+   
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.form input{
+    background-color: black;
+    border:1px solids rgb(194, 34, 34);
+    color: white;
+}
+.form select{
+    width: 90%;
+    border: none;
 }
 .btnSub{
     width: 100px;
-    height: 30px;
-    background-color: white;
+    height: 35px;
+    background-color: rgb(24, 20, 20);
+    color: white;
     border: none;
+}
+.btnSub:hover{
+    background-color: rgb(252, 251, 250);
+    color: black;
 }
 .Reference{
     background-color:yellow;
@@ -204,3 +226,24 @@
     background-color: red;
     color: rgb(255, 255, 255);
 }
+.notification{
+    width: 70%;
+    height: 50px;
+    margin: auto;
+    margin-top: 10px;
+    background-color: red;
+   
+    animation: blink-animation 1s infinite;
+}
+.notification span{
+    color: white;
+}
+
+@keyframes blink-animation {
+    0% { opacity: 0; } /* Make the div transparent at the start */
+    50% { opacity: 1; } /* Make the div opaque at the middle */
+    100% { opacity: 0; } /* Make the div transparent at the end */
+}
+
+
+  
